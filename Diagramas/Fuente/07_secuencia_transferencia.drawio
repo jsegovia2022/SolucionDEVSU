@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-09-16T22:31:09.552Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" etag="bp-seq-xfer-" version="24.7.17" type="device">
+  <diagram name="Secuencia transferencia" id="bp-seq-xfer-16sep">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+      <mxCell id="2" value="Figura 7. Secuencia — transferencia propia vs interbancaria" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#0F2744;" vertex="1" parent="1">
+        <mxGeometry x="40" y="15" width="1000" height="28" as="geometry"/>
+      </mxCell>
+      <mxCell id="3" value="Tercer servicio del enunciado. El tipo de transacción decide el sistema externo a invocar." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#475569;" vertex="1" parent="1">
+        <mxGeometry x="40" y="42" width="800" height="20" as="geometry"/>
+      </mxCell>
+      <mxCell id="4" value="App" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#0F2744;fontColor=#ffffff;strokeColor=#0F2744;fontStyle=1;size=36;fontSize=12;" vertex="1" parent="1">
+        <mxGeometry x="40" y="80" width="170" height="620" as="geometry"/>
+      </mxCell>
+      <mxCell id="5" value="API GW" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#0F2744;fontColor=#ffffff;strokeColor=#0F2744;fontStyle=1;size=36;fontSize=12;" vertex="1" parent="1">
+        <mxGeometry x="250" y="80" width="170" height="620" as="geometry"/>
+      </mxCell>
+      <mxCell id="6" value="Transferencias" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#0F2744;fontColor=#ffffff;strokeColor=#0F2744;fontStyle=1;size=36;fontSize=12;" vertex="1" parent="1">
+        <mxGeometry x="460" y="80" width="170" height="620" as="geometry"/>
+      </mxCell>
+      <mxCell id="7" value="Límites/Fraude" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#0F2744;fontColor=#ffffff;strokeColor=#0F2744;fontStyle=1;size=36;fontSize=12;" vertex="1" parent="1">
+        <mxGeometry x="670" y="80" width="170" height="620" as="geometry"/>
+      </mxCell>
+      <mxCell id="8" value="Core" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#0F2744;fontColor=#ffffff;strokeColor=#0F2744;fontStyle=1;size=36;fontSize=12;" vertex="1" parent="1">
+        <mxGeometry x="880" y="80" width="170" height="620" as="geometry"/>
+      </mxCell>
+      <mxCell id="9" value="SPI" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#0F2744;fontColor=#ffffff;strokeColor=#0F2744;fontStyle=1;size=36;fontSize=12;" vertex="1" parent="1">
+        <mxGeometry x="1090" y="80" width="170" height="620" as="geometry"/>
+      </mxCell>
+      <mxCell id="10" value="Notif + Auditoría" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#0F2744;fontColor=#ffffff;strokeColor=#0F2744;fontStyle=1;size=36;fontSize=12;" vertex="1" parent="1">
+        <mxGeometry x="1300" y="80" width="170" height="620" as="geometry"/>
+      </mxCell>
+      <mxCell id="11" value="POST /transfers + JWT + Idempotency-Key" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontSize=10;labelBackgroundColor=#ffffff;strokeColor=#1E293B;" edge="1" parent="1" source="4" target="5">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="12" value="ruteo tipo=OWN|SPI" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontSize=10;labelBackgroundColor=#ffffff;strokeColor=#1E293B;" edge="1" parent="1" source="5" target="6">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="13" value="evalúa límites y listas" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontSize=10;labelBackgroundColor=#ffffff;strokeColor=#1E293B;" edge="1" parent="1" source="6" target="7">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="14" value="ALLOW / STEP-UP / DENY" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontSize=10;labelBackgroundColor=#ffffff;strokeColor=#1E293B;" edge="1" parent="1" source="7" target="6">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="15" value="débito / reserva (idempotente)" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontSize=10;labelBackgroundColor=#ffffff;strokeColor=#1E293B;" edge="1" parent="1" source="6" target="8">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="16" value="OK Core" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontSize=10;labelBackgroundColor=#ffffff;strokeColor=#1E293B;" edge="1" parent="1" source="8" target="6">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="17" value="si SPI: instruye pago interbancario" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontSize=10;labelBackgroundColor=#ffffff;strokeColor=#1E293B;" edge="1" parent="1" source="6" target="9">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="18" value="aceptado / rechazo red" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontSize=10;labelBackgroundColor=#ffffff;strokeColor=#1E293B;" edge="1" parent="1" source="9" target="6">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="19" value="eventos TransferCompleted" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontSize=10;labelBackgroundColor=#ffffff;strokeColor=#1E293B;" edge="1" parent="1" source="6" target="10">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="20" value="202 + transferId (async SPI) o 200 OWN" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontSize=10;labelBackgroundColor=#ffffff;strokeColor=#1E293B;" edge="1" parent="1" source="6" target="4">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="21" value="&lt;b&gt;Reglas que dejé explícitas (para no improvisar en producción)&lt;/b&gt;&lt;br&gt;&lt;br&gt;1. Transferencia entre cuentas propias: solo Core. Respuesta síncrona. Notificación SMS + Push.&lt;br&gt;2. Interbancaria: Core reserva/débito + SPI. Si SPI no confirma, saga de compensación (no dejar al cliente en limbo).&lt;br&gt;3. Idempotency-Key 24 h: un reintento del celular no duplica el débito (red inestable es el caso real en banca móvil).&lt;br&gt;4. Timeouts: Fraude 800 ms, Core 3 s, SPI 5 s. Superado eso, circuito abierto y mensaje de negocio, no stack trace.&lt;br&gt;5. Notificar nunca bloquea el commit. Si SMS falla, queda en DLQ; el movimiento igual es válido.&lt;br&gt;6. Pagos a convenios (luz, agua, etc.) reutilizan el mismo servicio con adaptador de recaudador; no es un monolito nuevo." style="rounded=1;whiteSpace=wrap;html=1;align=left;spacingLeft=12;spacingTop=10;fillColor=#f8fafc;strokeColor=#334155;fontSize=12;" vertex="1" parent="1">
+        <mxGeometry x="40" y="730" width="1540" height="230" as="geometry"/>
+      </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

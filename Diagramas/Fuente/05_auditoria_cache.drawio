@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-09-16T22:06:55.330Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" etag="bp-audit-cac" version="24.7.17" type="device">
+  <diagram name="Auditoría y Cache-Aside" id="bp-audit-cache-16sep">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+      <mxCell id="2" value="Figura 5. Auditoría de acciones y persistencia de clientes frecuentes" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#0F2744;" vertex="1" parent="1">
+        <mxGeometry x="40" y="15" width="1100" height="28" as="geometry"/>
+      </mxCell>
+      <mxCell id="3" value="Patrones: Cache-Aside, Outbox, Event-driven, interceptores y almacén inmutable." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#475569;" vertex="1" parent="1">
+        <mxGeometry x="40" y="42" width="800" height="20" as="geometry"/>
+      </mxCell>
+      <mxCell id="4" value="Camino de una operación (ej. transferencia)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=32;horizontal=1;collapsible=0;html=1;rounded=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#0F2744;fontSize=13;" vertex="1" parent="1">
+        <mxGeometry x="30" y="80" width="520" height="720" as="geometry"/>
+      </mxCell>
+      <mxCell id="5" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;1. Front (SPA / Flutter)&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Canal]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;El usuario confirma. El BFF recibe el comando con Idempotency-Key.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;metaEdit=1;" vertex="1" parent="4">
+        <mxGeometry x="20" y="40" width="480" height="90" as="geometry"/>
+      </mxCell>
+      <mxCell id="6" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;2. Interceptor de auditoría&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Aspecto / filtro]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Captura actor, canal, IP, device-id, recurso y correlación. No altera el negocio.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#000000;align=center;arcSize=10;strokeColor=#2086C9;metaEdit=1;" vertex="1" parent="4">
+        <mxGeometry x="20" y="145" width="480" height="90" as="geometry"/>
+      </mxCell>
+      <mxCell id="7" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;3. Dominio + Outbox (misma TX)&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Patrón Outbox]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Persiste Transfer + evento AuditRequested. Evita &apos;la TX OK y el evento perdido&apos;.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#000000;align=center;arcSize=10;strokeColor=#2086C9;metaEdit=1;" vertex="1" parent="4">
+        <mxGeometry x="20" y="250" width="480" height="90" as="geometry"/>
+      </mxCell>
+      <mxCell id="8" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;4. Publisher&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Worker]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Lee outbox y publica a EventBridge. Marca publicado. Reintenta con backoff.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#000000;align=center;arcSize=10;strokeColor=#2086C9;metaEdit=1;" vertex="1" parent="4">
+        <mxGeometry x="20" y="355" width="480" height="90" as="geometry"/>
+      </mxCell>
+      <mxCell id="9" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;5. Servicio Auditoría&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Consumidor]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Inserta registro inmutable. Calcula hash del evento. Nunca UPDATE/DELETE.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#000000;align=center;arcSize=10;strokeColor=#2086C9;metaEdit=1;" vertex="1" parent="4">
+        <mxGeometry x="20" y="460" width="480" height="90" as="geometry"/>
+      </mxCell>
+      <mxCell id="10" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;6. SIEM / cumplimiento&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Salida]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;CloudWatch + S3 Glacier. Consultas de Superintendencia y fraude interno.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;" vertex="1" parent="4">
+        <mxGeometry x="20" y="565" width="480" height="90" as="geometry"/>
+      </mxCell>
+      <mxCell id="11" value="" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="5" target="6">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="12" value="" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="6" target="7">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="13" value="" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="7" target="8">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="14" value="" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="8" target="9">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="15" value="" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="9" target="10">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="16" value="Clientes frecuentes — Cache-Aside + invalidación" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=32;horizontal=1;collapsible=0;html=1;rounded=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#064E3B;fontSize=13;" vertex="1" parent="1">
+        <mxGeometry x="580" y="80" width="1040" height="430" as="geometry"/>
+      </mxCell>
+      <mxCell id="17" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Servicio Clientes&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Aplicación]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;¿Está en Redis? Sí → responde. No → Core, guarda, responde. Nunca cachea secretos ni PAN completo.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#000000;align=center;arcSize=10;strokeColor=#2086C9;metaEdit=1;" vertex="1" parent="16">
+        <mxGeometry x="20" y="50" width="240" height="140" as="geometry"/>
+      </mxCell>
+      <mxCell id="18" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Redis (Multi-AZ)&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Cache]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Clave cust:{id}. TTL 300 s. Eviction LRU. AUTH + cifrado en tránsito.&lt;/font&gt;&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#23A2D9;fontColor=#ffffff;strokeColor=#0E7DAD;align=center;" vertex="1" parent="16">
+        <mxGeometry x="290" y="50" width="230" height="140" as="geometry"/>
+      </mxCell>
+      <mxCell id="19" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Core bancario&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Sistema de registro]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Fuente de verdad. Circuit breaker. Si Core cae y hay cache fresco, se sirve consulta degradada.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;" vertex="1" parent="16">
+        <mxGeometry x="550" y="50" width="230" height="140" as="geometry"/>
+      </mxCell>
+      <mxCell id="20" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;CIF detalle&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Complemento]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Solo miss de datos extendidos. No se mete en el cache caliente de frecuentes.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;" vertex="1" parent="16">
+        <mxGeometry x="810" y="50" width="200" height="140" as="geometry"/>
+      </mxCell>
+      <mxCell id="21" value="GET / HIT" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="17" target="18">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="22" value="MISS" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="18" target="19">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="23" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Invalidación&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Evento CustomerUpdated]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Cambio de teléfono, bloqueo o KYC borra la clave. Write-around: el Core no escribe el cache.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#000000;align=center;arcSize=10;strokeColor=#2086C9;metaEdit=1;" vertex="1" parent="16">
+        <mxGeometry x="20" y="210" width="320" height="160" as="geometry"/>
+      </mxCell>
+      <mxCell id="24" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;¿Por qué Cache-Aside y no Write-Through?&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Decisión]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;El Core es legado y no se modifica. Write-through exigiría que el Core hable con Redis. Read-Through acoplaría el cache al cliente HTTP.&lt;/font&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;size=18;fillColor=#fff8e1;strokeColor=#d4a017;fontColor=#3F3A2A;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="16">
+        <mxGeometry x="360" y="210" width="340" height="160" as="geometry"/>
+      </mxCell>
+      <mxCell id="25" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Componentes que interactúan&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Relación]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;BFF → Servicio Clientes → Redis. Miss: ACL Core. Detalle: ACL CIF. EventBridge avisa invalidación. CloudWatch mide hit-ratio.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#000000;align=center;arcSize=10;strokeColor=#2086C9;metaEdit=1;" vertex="1" parent="16">
+        <mxGeometry x="720" y="210" width="290" height="160" as="geometry"/>
+      </mxCell>
+      <mxCell id="26" value="&lt;b&gt;Modelo de registro de auditoría (campos mínimos)&lt;/b&gt;&lt;br&gt;&lt;br&gt;event_id (UUID) &amp;nbsp; occurred_at (UTC) &amp;nbsp; actor_id &amp;nbsp; channel (web|ios|android)&lt;br&gt;action (TRANSFER_OWN | TRANSFER_SPI | PAYMENT | LOGIN | LOGOUT | ONBOARDING)&lt;br&gt;resource &amp;nbsp; amount_masked &amp;nbsp; ip &amp;nbsp; device_hash &amp;nbsp; correlation_id &amp;nbsp; result (OK|REJECT|ERROR)&lt;br&gt;prev_hash + hash → cadena de integridad. payload_ref en S3 si el cuerpo es grande.&lt;br&gt;&lt;br&gt;Retención: 10 años o la que fije la Superintendencia de Bancos. Partición mensual.&lt;br&gt;Acceso: rol de auditoría y oficial de cumplimiento. La aplicación de negocio solo INSERT vía cola.&lt;br&gt;Patrones: Interceptor, Outbox, Pub/Sub, Immutable log. Descartado: log de aplicación en disco." style="rounded=1;whiteSpace=wrap;html=1;align=left;spacingLeft=12;spacingTop=10;fillColor=#fff7ed;strokeColor=#c2410c;fontSize=12;fontColor=#1F2937;" vertex="1" parent="1">
+        <mxGeometry x="580" y="530" width="1040" height="270" as="geometry"/>
+      </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-09-16T21:12:44.218Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" etag="bp-c4-ctx-16" version="24.7.17" type="device">
+  <diagram name="C4-1 Contexto BP" id="bp-c4-ctx-16sep">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+      <mxCell id="2" value="Figura 1. Diagrama de Contexto (C4 Nivel 1) — Banca por Internet BP" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#0F2744;" vertex="1" parent="1">
+        <mxGeometry x="40" y="20" width="900" height="30" as="geometry"/>
+      </mxCell>
+      <mxCell id="3" value="Audiencia: negocio / no técnico. Sistemas internos, externos y actores." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#475569;" vertex="1" parent="1">
+        <mxGeometry x="40" y="48" width="700" height="20" as="geometry"/>
+      </mxCell>
+      <mxCell id="4" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Cliente BP&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Persona]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Consulta movimientos, transfiere y paga desde web o móvil. Tras el onboarding ingresa con clave, huella u OTP.&lt;/font&gt;&lt;/div&gt;" style="html=1;fontSize=12;whiteSpace=wrap;fillColor=#083F75;strokeColor=#06315C;fontColor=#ffffff;shape=mxgraph.c4.person2;boundedLbl=1;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];" vertex="1" parent="1">
+        <mxGeometry x="40" y="120" width="230" height="200" as="geometry"/>
+      </mxCell>
+      <mxCell id="5" value="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;Banca por Internet BP&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Sistema de software]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Canal digital: saldos, histórico, transferencias propias e interbancarias, pagos, notificaciones y auditoría de cada acción del cliente.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#1061B0;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0D5091;metaEdit=1;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1" parent="1">
+        <mxGeometry x="620" y="340" width="420" height="210" as="geometry"/>
+      </mxCell>
+      <mxCell id="6" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;IdP corporativo&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Sistema externo]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Producto existente OAuth 2.0 / OIDC. Emite tokens. No se reimplementa la lógica de identidad.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;" vertex="1" parent="1">
+        <mxGeometry x="560" y="90" width="250" height="140" as="geometry"/>
+      </mxCell>
+      <mxCell id="7" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Onboarding biométrico&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Sistema externo]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Reconocimiento facial con prueba de vida. Alta del cliente y enrolamiento de métodos de acceso.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;" vertex="1" parent="1">
+        <mxGeometry x="860" y="90" width="270" height="140" as="geometry"/>
+      </mxCell>
+      <mxCell id="8" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Core bancario&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Sistema externo]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Fuente de verdad: datos básicos del cliente, productos y movimientos. Se consume vía capa de integración.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;" vertex="1" parent="1">
+        <mxGeometry x="1280" y="180" width="320" height="150" as="geometry"/>
+      </mxCell>
+      <mxCell id="9" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Sistema de detalle del cliente&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Sistema externo]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Complementa el Core cuando se requiere información extendida (domicilio, contactos, KYC, documentos).&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;" vertex="1" parent="1">
+        <mxGeometry x="1280" y="360" width="320" height="150" as="geometry"/>
+      </mxCell>
+      <mxCell id="10" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;SPI / pagos interbancarios&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Sistema externo]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Red del Banco Central y/o ACH. Liquidación de transferencias a otros bancos.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;" vertex="1" parent="1">
+        <mxGeometry x="1280" y="540" width="320" height="150" as="geometry"/>
+      </mxCell>
+      <mxCell id="11" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Pasarela SMS&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Sistema externo]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Notificación de movimientos y OTP. Canal regulado, mínimo exigido.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;" vertex="1" parent="1">
+        <mxGeometry x="360" y="760" width="250" height="150" as="geometry"/>
+      </mxCell>
+      <mxCell id="12" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Email y Push&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Sistema externo]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Amazon SES + FCM/APNs. Segundo canal de notificación de movimientos.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;" vertex="1" parent="1">
+        <mxGeometry x="660" y="760" width="280" height="150" as="geometry"/>
+      </mxCell>
+      <mxCell id="13" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Motor de fraude / listas&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[Sistema externo]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;Validación de límites, listas negras y reglas AML antes de liquidar una transferencia.&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;" vertex="1" parent="1">
+        <mxGeometry x="990" y="760" width="280" height="150" as="geometry"/>
+      </mxCell>
+      <mxCell id="14" value="HTTPS / App + Web" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="4" target="5">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="15" value="OAuth 2.0 / OIDC" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="5" target="6">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="16" value="Biometría / KYC" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="5" target="7">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="17" value="Consulta cliente, productos, movimientos" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="8">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="18" value="Datos de detalle (bajo demanda)" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="9">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="19" value="Transferencia interbancaria" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="10">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="20" value="SMS movimiento / OTP" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="5" target="11">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="21" value="Email + Push" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="5" target="12">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="22" value="Scoring / listas" style="html=1;endArrow=blockThin;endFill=1;rounded=0;fontSize=10;fontColor=#1E293B;labelBackgroundColor=#ffffff;strokeColor=#334155;" edge="1" parent="1" source="5" target="13">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+      <mxCell id="23" value="&lt;b&gt;Leyenda&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&apos;#083F75&apos;&gt;&lt;b&gt;■&lt;/b&gt;&lt;/font&gt; Persona (actor)&lt;br&gt;&lt;font color=&apos;#1061B0&apos;&gt;&lt;b&gt;■&lt;/b&gt;&lt;/font&gt; Sistema interno BP&lt;br&gt;&lt;font color=&apos;#8C8496&apos;&gt;&lt;b&gt;■&lt;/b&gt;&lt;/font&gt; Sistema externo" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacingLeft=10;spacingTop=6;fillColor=#f8fafc;strokeColor=#cbd5e1;fontSize=11;fontColor=#1F2937;" vertex="1" parent="1">
+        <mxGeometry x="40" y="380" width="230" height="120" as="geometry"/>
+      </mxCell>
+      <mxCell id="24" value="&lt;b&gt;Notas de lectura&lt;/b&gt;&lt;br&gt;• El Core no se modifica; se adapta.&lt;br&gt;• El IdP ya existe en la compañía.&lt;br&gt;• Mínimo 2 canales de aviso al cliente.&lt;br&gt;• Onboarding facial es parte del alta." style="shape=note;whiteSpace=wrap;html=1;size=18;fillColor=#fff8e1;strokeColor=#d4a017;fontColor=#3F3A2A;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+        <mxGeometry x="40" y="530" width="280" height="140" as="geometry"/>
+      </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
